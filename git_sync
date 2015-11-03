@@ -5,7 +5,7 @@
 
 #install git
 GIT_URL=https://github.com/StefanRvO/scripts.git
-GIT_DIR=$HOME/scripts
+GIT_DIR=/root/scripts
 SYNC_SCRIPT=/usr/bin/git_sync.sh
 
 x=`pacman -Qs git`
@@ -28,7 +28,7 @@ echo '
 #!/bin/sh
 
 #Sync the git repo
-git -C $GIT_DIR' > $SYNC_SCRIPT
+git -C /root/scripts pull' > $SYNC_SCRIPT
 chmod +x $SYNC_SCRIPT
 
 
