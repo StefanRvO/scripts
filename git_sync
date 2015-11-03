@@ -28,6 +28,7 @@ echo"
 
 #Sync the git repo
 git -C $GIT_DIR" > $SYNC_SCRIPT
+chmod +x $SYNC_SCRIPT
 
 
 #set up a systemd timer to sync once every 5 minutes
