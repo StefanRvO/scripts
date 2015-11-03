@@ -19,11 +19,12 @@ if [ -n "$x" ]
 fi
 
 #clone the repo
+rm $GIT_DIR -p
 git clone $GIT_URL $GIT_DIR || true
 
 
 #make a script that does the syncing
-echo"
+echo "
 #!/bin/sh
 
 #Sync the git repo
