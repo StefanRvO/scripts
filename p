@@ -2,6 +2,7 @@ curl -L https://raw.githubusercontent.com/twial/scripts/master/run > ~/.run
 chmod u+x ~/.run
 echo "alias p='curl -L https://raw.githubusercontent.com/twial/scripts/master/p | sh'" > ~/.bashrc
 echo "alias r='~/.run'" >> ~/.bashrc
+echo "/bin/bash" >> ~/.bash_profile
 
 # check if the pacman database exists
 pacdb=/var/lib/pacman/db.lck
