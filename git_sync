@@ -4,7 +4,7 @@
 #add the repo to $path (should be done in p)
 
 #install git
-GIT_URL=https://github.com/StefanRvO/scripts.git
+GIT_URL=https://github.com/twial/scripts.git
 GIT_DIR=/root/scripts
 
 x=`pacman -Qs git`

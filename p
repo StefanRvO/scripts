@@ -4,7 +4,7 @@ echo "alias p='curl -L https://raw.githubusercontent.com/twial/scripts/master/p 
 echo "alias r='~/.run'" >> ~/.bashrc
 
 #Add scripts to path
-echo 'PATH=/root/scripts:$PATH' > ~/.profile
+echo 'PATH=/root/scripts:$PATH' > ~/.bashrc
 
 # check if the pacman database exists
 pacdb=/var/lib/pacman/db.lck
