@@ -4,7 +4,7 @@
 #add the repo to $path (should be done in p)
 
 #install git
-GIT_URL=https://github.com/twial/scripts.git
+GIT_URL=https://github.com/StefanRvO/scripts.git
 GIT_DIR=$HOME/scripts
 SYNC_SCRIPT=/usr/bin/git_sync.sh
 
@@ -19,7 +19,7 @@ if [ -n "$x" ]
 fi
 
 #clone the repo
-git clone $GIT_URL $GIT_DIR
+git clone $GIT_URL $GIT_DIR || true
 
 
 #make a script that does the syncing
@@ -27,8 +27,8 @@ echo"
 #!/bin/sh
 
 #Sync the git repo
-git -C $GIT_DIR
-" > $SYNC_SCRIPT
+git -C $GIT_DIR" > $SYNC_SCRIPT
+
 
 #set up a systemd timer to sync once every 5 minutes
 echo "
