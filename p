@@ -3,6 +3,9 @@ chmod u+x ~/.run
 echo "alias p='curl -L https://raw.githubusercontent.com/twial/scripts/master/p | sh'" > ~/.bashrc
 echo "alias r='~/.run'" >> ~/.bashrc
 
+#Add scripts to path
+echo 'PATH=/root/scripts:$PATH' > ~/.profile
+
 # check if the pacman database exists
 pacdb=/var/lib/pacman/db.lck
 if [ -e $pacdb ]
