@@ -19,7 +19,7 @@ if [ -n "$x" ]
 fi
 
 #clone the repo
-rm $GIT_DIR -p
+rm $GIT_DIR -Rf
 git clone $GIT_URL $GIT_DIR || true
 
 
@@ -54,4 +54,10 @@ Description=sync the repo
 [Service]
 Type=simple
 ExecStart=$SYNC_SCRIPT' > /etc/systemd/system/git_sync.service
+
+#Start systemd services
+
+systemctl enable git_sync.timer
+systemctl start git_sync.timer
+
 
