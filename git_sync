@@ -33,8 +33,7 @@ chmod +x $SYNC_SCRIPT
 
 
 #set up a systemd timer to sync once every 5 minutes
-echo '
-[Unit]
+echo '[Unit]
 Description=sync the repo every 5 minutes
 
 [Timer]
@@ -47,13 +46,12 @@ WantedBy=timers.target' > /etc/systemd/system/git_sync.timer
 
 #set up the service for the timer
 
-echo '
-[Unit]
+echo '[Unit]
 Description=sync the repo
 
 [Service]
 Type=simple
-ExecStart=$SYNC_SCRIPT' > /etc/systemd/system/git_sync.service
+ExecStart=/usr/bin/git_sync.sh' > /etc/systemd/system/git_sync.service
 
 #Start systemd services
 
