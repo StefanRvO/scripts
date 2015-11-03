@@ -1,0 +1,55 @@
+#!/bin/sh
+
+#create a local copy of the git repo, and create a systemd timer to sync it once every 5 minute.
+#add the repo to $path (should be done in p)
+
+#install git
+GIT_URL=https://github.com/twial/scripts.git
+GIT_DIR=$HOME/scripts
+SYNC_SCRIPT=/usr/bin/git_sync.sh
+
+x=`pacman -Qs git`
+
+if [ -n "$x" ] 
+    then
+        echo "git is installed!"
+    else
+        echo "git is not installed! installing.."
+        pacman -S git --noconfirm
+fi
+
+#clone the repo
+git clone $GIT_URL $GIT_DIR
+
+
+#make a script that does the syncing
+echo"
+#!/bin/sh
+
+#Sync the git repo
+git -C $GIT_DIR
+" > $SYNC_SCRIPT
+
+#set up a systemd timer to sync once every 5 minutes
+echo "
+[Unit]
+Description=sync the repo every 5 minutes
+
+[Timer]
+OnCalendar=*:0/5
+Persistent=true
+Unit=git_sync.service
+ 
+[Install]
+WantedBy=timers.target" > /etc/systemd/system/git_sync.timer
+
+#set up the service for the timer
+
+echo "
+[Unit]
+Description=sync the repo
+
+[Service]
+Type=simple
+ExecStart=$SYNC_SCRIPT" > /etc/systemd/system/git_sync.service
+
