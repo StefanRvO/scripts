@@ -24,16 +24,16 @@ git clone $GIT_URL $GIT_DIR || true
 
 
 #make a script that does the syncing
-echo "
+echo '
 #!/bin/sh
 
 #Sync the git repo
-git -C $GIT_DIR" > $SYNC_SCRIPT
+git -C $GIT_DIR' > $SYNC_SCRIPT
 chmod +x $SYNC_SCRIPT
 
 
 #set up a systemd timer to sync once every 5 minutes
-echo "
+echo '
 [Unit]
 Description=sync the repo every 5 minutes
 
@@ -43,15 +43,15 @@ Persistent=true
 Unit=git_sync.service
  
 [Install]
-WantedBy=timers.target" > /etc/systemd/system/git_sync.timer
+WantedBy=timers.target' > /etc/systemd/system/git_sync.timer
 
 #set up the service for the timer
 
-echo "
+echo '
 [Unit]
 Description=sync the repo
 
 [Service]
 Type=simple
-ExecStart=$SYNC_SCRIPT" > /etc/systemd/system/git_sync.service
+ExecStart=$SYNC_SCRIPT' > /etc/systemd/system/git_sync.service
 
